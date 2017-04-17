@@ -32,6 +32,10 @@ module Sequel
             val && val.first
           end
 
+          define_singleton_method "#{column}" do
+            self.enums[column]
+          end
+
           values.each do |key, value|
             define_method "#{key}?" do
               self.send(column) == key

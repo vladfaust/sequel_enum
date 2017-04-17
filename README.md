@@ -24,6 +24,8 @@ class Item < Sequel::Model
   enum :condition, [:mint, :good, :poor]
 end
 
+Item.condition[:mint] #> 0
+
 item = Item.new
 item.condition = :mint
 
@@ -43,6 +45,8 @@ class Item < Sequel::Model
   plugin :enum
   enum :condition, { mint: 10, good: 11, poor: 15 }
 end
+
+print Item.condition[:good] #> 11
 
 item = Item.create(:condition => :mint)
 
